@@ -61,8 +61,8 @@ workflows:
           app_catalog_test: "giantswarm-incubator-test-catalog"
           chart: "efk-logging-stack"
           # Trigger job on git tag.
-          filters:
-            tags:
-              only: /^v.*/
+          # filters:
+          #   tags:
+          #     only: /^v.*/
           requires:
             - "Package child charts"
