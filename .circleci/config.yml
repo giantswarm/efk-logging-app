@@ -18,7 +18,7 @@ commands:
 
 jobs:
   package-child-charts:
-    executor: docker
+    executor: architect
     steps:
       - package-chart:
           chart: "efk-logging-curator"
