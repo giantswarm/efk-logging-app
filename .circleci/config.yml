@@ -18,7 +18,8 @@ commands:
 
 jobs:
   package-child-charts:
-    executor: architect
+    docker:
+      - image: alpine/helm:2.15.1
     steps:
       - package-chart:
           chart: "efk-logging-curator"
