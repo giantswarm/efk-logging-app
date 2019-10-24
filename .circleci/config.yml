@@ -1,16 +1,51 @@
 version: 2.1
 orbs:
-  architect: giantswarm/architect@0.1.2
+  architect: giantswarm/architect@0.4.3
 
+jobs:
+  package_chart:
+    docker:
+      - image: alpine/helm:2.15.1
+    steps:
+      - checkout
+      - run:
+          name: Package Chart
+          command: 'helm package ./helm/<< parameters.chart >> -d ./helm/<< parameters.destination >>/charts'
+            
 workflows:
   package-and-push-chart-on-tag:
     jobs:
+      - package_chart:
+          name: "Package Curator chart"
+          chart: "efk-logging-curator"
+          destination: "efk-logging-stack"
+
+      - package_chart:
+          name: "Package Fluentd chart"
+          chart: "efk-logging-fluentd"
+          destination: "efk-logging-stack"
+
+      - package_chart:
+          name: "Package Kibana chart"
+          chart: "efk-logging-kibana"
+          destination: "efk-logging-stack"
+
+      - package_chart:
+          name: "Package Elasticsearch chart"
+          chart: "efk-logging-elasticsearch"
+          destination: "efk-logging-stack"
+
       - architect/push-to-app-catalog:
-          name: "package and push {CHART-NAME} chart"
+          name: "package and push EFK Stack chart"
           app_catalog: "giantswarm-incubator-catalog"
           app_catalog_test: "giantswarm-incubator-test-catalog"
-          chart: "{CHART-NAME}"
+          chart: "efk-logging-stack"
           # Trigger job on git tag.
           filters:
             tags:
               only: /^v.*/
+          requires:
+            - "Package Curator chart"
+            - "Package Fluentd chart"
+            - "Package Kibana chart"
+            - "Package Elasticsearch chart"
