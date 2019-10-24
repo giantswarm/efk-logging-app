@@ -23,13 +23,13 @@ jobs:
       - package-chart:
           chart: "efk-logging-curator"
           destination: "efk-logging-stack"
-      - package_chart:
+      - package-chart:
           chart: "efk-logging-fluentd"
           destination: "efk-logging-stack"
-      - package_chart:
+      - package-chart:
           chart: "efk-logging-kibana"
           destination: "efk-logging-stack"
-      - package_chart:
+      - package-chart:
           chart: "efk-logging-elasticsearch"
           destination: "efk-logging-stack"
 
