@@ -54,6 +54,8 @@ workflows:
 
       - find-job:
           name: "Find"
+          requires:
+            - "Package child charts"
 
       - architect/push-to-app-catalog:
           name: "Package and push EFK Stack chart"
