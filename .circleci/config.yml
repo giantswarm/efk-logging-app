@@ -14,7 +14,7 @@ commands:
       - checkout
       - run:
           name: Package Chart
-          command: 'helm package ./helm/<< chart >> -d ./helm/<< destination >>/charts'
+          command: 'helm package ./helm/<< parameters.chart >> -d ./helm/<< parameters.destination >>/charts'
 
 jobs:
   package-child-charts:
