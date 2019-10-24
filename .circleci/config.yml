@@ -12,9 +12,6 @@ commands:
         type: string
     steps:
       - run:
-          name: Find
-          command: 'find .'
-      - run:
           name: Package Chart
           command: 'helm package ./helm/<< parameters.chart >> -d ./helm/<< parameters.destination >>/charts'
 
@@ -40,11 +37,23 @@ jobs:
           chart: "efk-logging-elasticsearch"
           destination: "efk-logging-stack"
 
+  find-job:
+    docker:
+      - image: alpine/helm:2.15.1
+    steps:
+      - checkout
+      - run:
+          name: "Find"
+          command: 'find .'
+          
 workflows:
   package-and-push-chart-on-tag:
     jobs:
       - package-child-charts:
           name: "Package child charts"
+
+      - find-job:
+          name: "Find"
 
       - architect/push-to-app-catalog:
           name: "Package and push EFK Stack chart"
@@ -55,6 +64,5 @@ workflows:
           filters:
             tags:
               only: /^v.*/
-          type: approval
           requires:
             - "Package child charts"
