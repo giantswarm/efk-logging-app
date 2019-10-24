@@ -2,10 +2,14 @@ version: 2.1
 orbs:
   architect: giantswarm/architect@0.4.3
 
-jobs:
-  package_chart:
-    docker:
-      - image: alpine/helm:2.15.1
+commands:
+  package-chart:
+    description: "Helm package"
+    parameters:
+      chart:
+        type: string
+      destination:
+        type: string
     steps:
       - checkout
       - run:
@@ -15,28 +19,24 @@ jobs:
 workflows:
   package-and-push-chart-on-tag:
     jobs:
-      - package_chart:
-          name: "Package Curator chart"
-          chart: "efk-logging-curator"
-          destination: "efk-logging-stack"
-
-      - package_chart:
-          name: "Package Fluentd chart"
-          chart: "efk-logging-fluentd"
-          destination: "efk-logging-stack"
-
-      - package_chart:
-          name: "Package Kibana chart"
-          chart: "efk-logging-kibana"
-          destination: "efk-logging-stack"
-
-      - package_chart:
-          name: "Package Elasticsearch chart"
-          chart: "efk-logging-elasticsearch"
-          destination: "efk-logging-stack"
+      - package-child-charts:
+          name: "Package child charts"
+          steps:
+            - package-chart:
+                chart: "efk-logging-curator"
+                destination: "efk-logging-stack"
+            - package_chart:
+                chart: "efk-logging-fluentd"
+                destination: "efk-logging-stack"
+            - package_chart:
+                chart: "efk-logging-kibana"
+                destination: "efk-logging-stack"
+            - package_chart:
+                chart: "efk-logging-elasticsearch"
+                destination: "efk-logging-stack"
 
       - architect/push-to-app-catalog:
-          name: "package and push EFK Stack chart"
+          name: "Package and push EFK Stack chart"
           app_catalog: "giantswarm-incubator-catalog"
           app_catalog_test: "giantswarm-incubator-test-catalog"
           chart: "efk-logging-stack"
