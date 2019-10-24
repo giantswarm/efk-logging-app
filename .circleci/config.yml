@@ -36,12 +36,10 @@ jobs:
       - package-chart:
           chart: "efk-logging-elasticsearch"
           destination: "efk-logging-stack"
-
   find-job:
     docker:
       - image: alpine/helm:2.15.1
     steps:
-      - checkout
       - run:
           name: "Find"
           command: 'find .'
