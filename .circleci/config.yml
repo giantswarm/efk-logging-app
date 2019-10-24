@@ -48,5 +48,6 @@ workflows:
           filters:
             tags:
               only: /^v.*/
+          type: approval
           requires:
             - "Package child charts"
