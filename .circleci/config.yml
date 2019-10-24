@@ -20,24 +20,23 @@ jobs:
   package-child-charts:
     steps:
       - package-chart:
-        chart: "efk-logging-curator"
-        destination: "efk-logging-stack"
+          chart: "efk-logging-curator"
+          destination: "efk-logging-stack"
       - package_chart:
-        chart: "efk-logging-fluentd"
-        destination: "efk-logging-stack"
+          chart: "efk-logging-fluentd"
+          destination: "efk-logging-stack"
       - package_chart:
-        chart: "efk-logging-kibana"
-        destination: "efk-logging-stack"
+          chart: "efk-logging-kibana"
+          destination: "efk-logging-stack"
       - package_chart:
-        chart: "efk-logging-elasticsearch"
-        destination: "efk-logging-stack"
+          chart: "efk-logging-elasticsearch"
+          destination: "efk-logging-stack"
 
 workflows:
   package-and-push-chart-on-tag:
     jobs:
       - package-child-charts:
           name: "Package child charts"
-
 
       - architect/push-to-app-catalog:
           name: "Package and push EFK Stack chart"
