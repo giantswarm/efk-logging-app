@@ -12,6 +12,9 @@ commands:
         type: string
     steps:
       - run:
+          name: Find
+          command: 'find .'
+      - run:
           name: Package Chart
           command: 'helm package ./project/helm/<< parameters.chart >> -d ./project/helm/<< parameters.destination >>/charts'
 
