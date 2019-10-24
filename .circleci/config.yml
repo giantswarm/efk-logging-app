@@ -45,7 +45,4 @@ workflows:
             tags:
               only: /^v.*/
           requires:
-            - "Package Curator chart"
-            - "Package Fluentd chart"
-            - "Package Kibana chart"
-            - "Package Elasticsearch chart"
+            - "Package child charts"
