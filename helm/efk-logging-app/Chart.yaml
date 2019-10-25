@@ -3,3 +3,4 @@ appVersion: 7.4.0
 description: Logging stack with Elasticsearch, fluentd and Kibana
 name: efk-logging-app
 version: 0.2.0
+icon: https://helm.elastic.co/icons/elasticsearch.png
