@@ -9,7 +9,7 @@ workflows:
           name: "Package and push EFK Stack chart"
           app_catalog: "giantswarm-incubator-catalog"
           app_catalog_test: "giantswarm-incubator-test-catalog"
-          chart: "efk-logging-app-stack"
+          chart: "efk-logging-app"
           # Trigger job on git tag.
           filters:
             tags:
