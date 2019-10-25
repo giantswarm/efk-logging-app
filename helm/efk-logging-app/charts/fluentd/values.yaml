@@ -52,7 +52,7 @@ elasticsearch:
   bufferChunkLimit: "2M"
   bufferQueueLimit: 8
   host: "elasticsearch-master"
-  logstashPrefix: "logstash"
+  logstashPrefix: "fluentd"
   port: 9200
   path: ""
   scheme: "http"

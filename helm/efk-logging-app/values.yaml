@@ -6,18 +6,14 @@ kibana:
   enabled: true
   # for options see https://github.com/giantswarm/helm-kibana
 
-keycloak-gatekeeper:
-  enabled: false
-  # for options see https://github.com/giantswarm/helm-keycloak-gatekeeper
-
-fluentd-elasticsearch:
+fluentd:
   enabled: true
-  # for options see https://github.com/kiwigrid/helm-charts/tree/master/charts/fluentd-elasticsearch
+  # for options see https://github.com/helm/charts/blob/master/stable/fluentd-elasticsearch
+
+curator:
+  enabled: true
+  # for options see https://github.com/helm/charts/tree/master/stable/elasticsearch-curator
 
 elasticsearch-exporter:
-  enabled: true
-  # for options see https://github.com/helm/charts/tree/master/stable/elasticsearch-exporter
-
-elasticsearch-curator:
   enabled: true
   # for options see https://github.com/helm/charts/tree/master/stable/elasticsearch-exporter
