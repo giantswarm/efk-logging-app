@@ -190,9 +190,9 @@ configMaps:
   useDefaults:
     systemConf: true
     containersInputConf: true
-    systemInputConf: true
-    forwardInputConf: true
-    monitoringConf: true
+    systemInputConf: false
+    forwardInputConf: false
+    monitoringConf: false
     outputConf: true
 
 # can be used to add new config or overwrite the default configmaps completely after the configmaps default has been disabled above
