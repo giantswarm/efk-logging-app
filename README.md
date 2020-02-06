@@ -1,5 +1,7 @@
 [![CircleCI](https://circleci.com/gh/giantswarm/efk-logging-app.svg?style=shield)](https://circleci.com/gh/giantswarm/efk-logging-app)
 
+# This application is deprecated, please use https://github.com/giantswarm/opendistro-app
+
 # EFK-logging-app chart
 
 Giant Swarm offers a EFK logging Managed App which can be installed in tenant clusters.
