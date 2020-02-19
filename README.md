@@ -1,6 +1,6 @@
 [![CircleCI](https://circleci.com/gh/giantswarm/efk-logging-app.svg?style=shield)](https://circleci.com/gh/giantswarm/efk-logging-app)
 
-# This application is deprecated, please use https://github.com/giantswarm/opendistro-app
+# This application is deprecated, please use https://github.com/giantswarm/efk-stack-app
 
 # EFK-logging-app chart
 
